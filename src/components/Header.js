@@ -2,7 +2,7 @@ import { React, useContext, useEffect, useState } from "react";
 import { LOGO_URL } from "../utils/constants";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
-import UserContext from "../utils/userContext";
+import UserContext from "../utils/UserContext";
 import { useSelector } from "react-redux";
 
 const Header = ({ isChecked, setIsChecked }) => {

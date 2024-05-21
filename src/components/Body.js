@@ -3,7 +3,7 @@ import resObj from "../utils/mockData";
 import { useContext, useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
-import UserContext from "../utils/userContext";
+import UserContext from "../utils/UserContext";
 import React from "react";
 
 // import useOnlineStatus from "../utils/useOnlineStatus";
