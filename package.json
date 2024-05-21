@@ -5,6 +5,7 @@
   "description": "[\r   {\r     \"info\": {\r       \"id\": \"144024\",\r       \"name\": \"UBQ by Barbeque Nation\",\r       \"cloudinaryImageId\": \"nvqpwq8nvevvxbj1mnxe\",\r       \"locality\": \"The great mall\",\r       \"areaName\": \"Dhanmandi\",\r       \"costForTwo\": \"₹300 for two\",\r       \"cuisines\": [\r         \"North Indian\",\r         \"Barbecue\",\r         \"Biryani\",\r         \"Kebabs\",\r         \"Mughlai\",\r         \"Desserts\"\r       ],\r       \"avgRating\": 4.2,\r       \"parentId\": \"10804\",\r       \"avgRatingString\": \"4.2\",\r       \"totalRatingsString\": \"1K+\",\r       \"sla\": {\r         \"deliveryTime\": 33,\r         \"lastMileTravel\": 4,\r         \"serviceability\": \"SERVICEABLE\",\r         \"slaString\": \"30-35 mins\",\r         \"lastMileTravelString\": \"4.0 km\",\r         \"iconType\": \"ICON_TYPE_EMPTY\"\r       },\r       \"availability\": {\r         \"nextCloseTime\": \"2024-04-27 23:30:00\",\r         \"opened\": true\r       },\r       \"badges\": {",
   "scripts": {
     "start": "npx parcel index.html",
+    "build": "npx parcel build index.html",
     "test": "jest",
     "watch-test": "jest --watch"
   },
@@ -36,7 +37,8 @@
     "@reduxjs/toolkit": "^2.2.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-test-renderer": "^18.3.1"
-  },
-  "main": "tailwind.config.js"
+    "react-test-renderer": "^18.3.1",
+    "react-router-dom": "^6.23.1",
+    "react-redux": "^9.1.2"
+  }
 }
