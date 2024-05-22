@@ -22,20 +22,39 @@ const Body = () => {
     fetchData();
   }, []);
 
-  const fetchData = async () => {
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=25.1523685&lng=75.84322759999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-    );
-    const json = await data.json();
-    setlistOfRestaurants(
-      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
-    setfilteredRestaurant(
-      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
-  };
+  // const fetchData = async () => {
+  //   const data = await fetch(
+  //     "https://www.swiggy.com/dapi/restaurants/list/v5?lat=25.1523685&lng=75.84322759999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+  //   );
+  //   const json = await data.json();
+  //   setlistOfRestaurants(
+  //     json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+  //   );
+  //   setfilteredRestaurant(
+  //     json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+  //   );
+  // };
   // console.log(listOfRestaurants);
 
+  const fetchData = async () => {
+    try {
+      const corsProxyUrl = "https://cors-anywhere.herokuapp.com/";
+      const apiUrl =
+        "https://www.swiggy.com/dapi/restaurants/list/v5?lat=25.1523685&lng=75.84322759999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING";
+      const response = await fetch(corsProxyUrl + apiUrl);
+      const json = await response.json();
+      setlistOfRestaurants(
+        json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants
+      );
+      setfilteredRestaurant(
+        json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants
+      );
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
   return listOfRestaurants.length === 0 ? (
     <Shimmer />
   ) : (
@@ -43,7 +62,7 @@ const Body = () => {
       <input
         className="m-3 border border-solid border-black inline-flex"
         value={searchText}
-        data-testid = "SearchInput"
+        data-testid="SearchInput"
         onChange={(e) => {
           setsearchText(e.target.value);
         }}
