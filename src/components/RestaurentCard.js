@@ -9,14 +9,20 @@ const RestaurentCard = (props) => {
   const { cloudinaryImageId, name, cuisines, costForTwo, avgRating, sla } =
     resData?.info;
   // const { loggedInUser } = useContext(UserContext);
-
+  const CDN_URL_NEW = process.env.REACT_APP_CDN_URL || CDN_URL;
   return (
     <div
       data-testid="ResCard"
       className="m-4 p-4 w-[250px] bg-gray-200  border border-black border-solid rounded-xl hover:bg-gray-300"
     >
-      <img
+      {/* <img
         src={CDN_URL + cloudinaryImageId}
+        alt="res-logo"
+        className="rounded-xl"
+      /> */}
+
+      <img
+        src={`${CDN_URL_NEW}${cloudinaryImageId}`}
         alt="res-logo"
         className="rounded-xl"
       />

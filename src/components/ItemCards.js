@@ -9,6 +9,8 @@ const ItemCards = ({ items }) => {
   const handleClick = (item) => {
     dispatch(addItem(item));
   };
+  const CDN_URL_NEW = process.env.REACT_APP_CDN_URL || CDN_URL;
+
   return (
     <div>
       {items.map((item) => (
@@ -37,11 +39,23 @@ const ItemCards = ({ items }) => {
                 ADD+
               </button>
             </div>
-            <img
+            {/* <img
               src={
-                item.card.info.imageId ? CDN_URL + item.card.info.imageId : ""
+                item.card.info.imageId
+                  ? CDN_URL_NEW + item.card.info.imageId
+                  : ""
               }
               alt=""
+            /> */}
+
+            <img
+              src={
+                item.card.info.imageId
+                  ? `${CDN_URL_NEW}${item.card.info.imageId}`
+                  : ""
+              }
+              alt="res-logo"
+              className="rounded-xl"
             />
           </div>
         </div>
