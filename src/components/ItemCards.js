@@ -4,12 +4,18 @@ import { addItem } from "../utils/cartSlice";
 import React from "react";
 
 const ItemCards = ({ items }) => {
-  console.log(items);
+  // console.log(items);
   const dispatch = useDispatch();
   const handleClick = (item) => {
     dispatch(addItem(item));
   };
-  const CDN_URL_NEW = process.env.REACT_APP_CDN_URL || CDN_URL;
+  const CDN_URL_NEW = process.env.REACT_APP_CDN_URL;
+  console.log("Old Image URL:", CDN_URL);
+  console.log("New CDN URL:", process.env.REACT_APP_CDN_URL);
+  console.log(
+    "Total Link",
+    process.env.REACT_APP_CDN_URL + items[0].card.info.imageId
+  );
 
   return (
     <div>
@@ -56,6 +62,9 @@ const ItemCards = ({ items }) => {
               }
               alt="res-logo"
               className="rounded-xl"
+              onError={(e) => {
+                console.error("Image failed to load:", e.target.src);
+              }}
             />
           </div>
         </div>

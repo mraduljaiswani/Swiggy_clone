@@ -9,7 +9,11 @@ const RestaurentCard = (props) => {
   const { cloudinaryImageId, name, cuisines, costForTwo, avgRating, sla } =
     resData?.info;
   // const { loggedInUser } = useContext(UserContext);
-  const CDN_URL_NEW = process.env.REACT_APP_CDN_URL || CDN_URL;
+  const CDN_URL_NEW = process.env.REACT_APP_CDN_URL;
+  console.log("Old Image URL:", CDN_URL);
+  console.log("New CDN URL:", process.env.REACT_APP_CDN_URL);
+  console.log("Total Link", process.env.REACT_APP_CDN_URL + cloudinaryImageId);
+
   return (
     <div
       data-testid="ResCard"
@@ -25,6 +29,9 @@ const RestaurentCard = (props) => {
         src={`${CDN_URL_NEW}${cloudinaryImageId}`}
         alt="res-logo"
         className="rounded-xl"
+        onError={(e) => {
+          console.error("Image failed to load:", e.target.src);
+        }}
       />
       <h3 className="font-bold py-2 text-lg">{name}</h3>
       <h4>{cuisines.join(", ")}</h4>
