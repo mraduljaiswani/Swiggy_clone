@@ -5,6 +5,7 @@ import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import UserContext from "../utils/UserContext";
 import React from "react";
+import {corsProxyUrl} from "../utils/constants";
 
 // import useOnlineStatus from "../utils/useOnlineStatus";
 
@@ -38,7 +39,6 @@ const Body = () => {
 
   const fetchData = async () => {
     try {
-      const corsProxyUrl = "https://cors-anywhere.herokuapp.com/";
       const apiUrl =
         "https://www.swiggy.com/dapi/restaurants/list/v5?lat=25.1523685&lng=75.84322759999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING";
       const response = await fetch(corsProxyUrl + apiUrl);
