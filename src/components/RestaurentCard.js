@@ -9,10 +9,9 @@ const RestaurentCard = (props) => {
   const { cloudinaryImageId, name, cuisines, costForTwo, avgRating, sla } =
     resData?.info;
   // const { loggedInUser } = useContext(UserContext);
-  const CDN_URL_NEW = process.env.REACT_APP_CDN_URL;
+  // const CDN_URL_NEW = process.env.REACT_APP_CDN_URL;
   console.log("Old Image URL:", CDN_URL);
-  console.log("New CDN URL:", process.env.REACT_APP_CDN_URL);
-  console.log("Total Link", process.env.REACT_APP_CDN_URL + cloudinaryImageId);
+  console.log("Total Link", CDN_URL + cloudinaryImageId);
 
   return (
     <div
@@ -26,7 +25,10 @@ const RestaurentCard = (props) => {
       /> */}
 
       <img
-        src={`${CDN_URL_NEW}${cloudinaryImageId}`}
+        src={
+          "https:/media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
+          cloudinaryImageId
+        }
         alt="res-logo"
         className="rounded-xl"
         onError={(e) => {

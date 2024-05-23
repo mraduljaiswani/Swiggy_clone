@@ -55,9 +55,15 @@ const ItemCards = ({ items }) => {
             /> */}
 
             <img
+              // src={
+              //   item.card.info.imageId
+              //     ? `${CDN_URL_NEW}${item.card.info.imageId}`
+              //     : ""
+              // }
               src={
                 item.card.info.imageId
-                  ? `${CDN_URL_NEW}${item.card.info.imageId}`
+                  ? "https:/media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
+                    item.card.info.imageId
                   : ""
               }
               alt="res-logo"
