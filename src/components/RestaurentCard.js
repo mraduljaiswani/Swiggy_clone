@@ -26,11 +26,7 @@ const RestaurentCard = (props) => {
 
       <img
         src={`${process.env.REACT_APP_CDN_URL}/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/${cloudinaryImageId}`}
-        alt="res-logo"
         className="rounded-xl"
-        onError={(e) => {
-          console.error("Image failed to load:", e.target.src);
-        }}
       />
       <h3 className="font-bold py-2 text-lg">{name}</h3>
       <h4>{cuisines.join(", ")}</h4>

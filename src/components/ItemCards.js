@@ -65,11 +65,7 @@ const ItemCards = ({ items }) => {
                   ? `${process.env.REACT_APP_CDN_URL}/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/${item.card.info.imageId}`
                   : ""
               }
-              alt="res-logo"
               className="rounded-xl"
-              onError={(e) => {
-                console.error("Image failed to load:", e.target.src);
-              }}
             />
           </div>
         </div>
