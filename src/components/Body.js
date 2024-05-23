@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import UserContext from "../utils/UserContext";
 import React from "react";
 import { corsProxyUrl } from "../utils/constants";
+import MOCK_DATA from "./mocks/mockResListData.json";
 
 // import useOnlineStatus from "../utils/useOnlineStatus";
 
@@ -23,47 +24,55 @@ const Body = () => {
     fetchData();
   }, []);
 
-  // const fetchData = async () => {
-  //   const data = await fetch(
-  //     "https://www.swiggy.com/dapi/restaurants/list/v5?lat=25.1523685&lng=75.84322759999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-  //   );
-  //   const json = await data.json();
-  //   setlistOfRestaurants(
-  //     json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-  //   );
-  //   setfilteredRestaurant(
-  //     json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-  //   );
-  // };
-  // console.log(listOfRestaurants);
-
   const fetchData = async () => {
-    try {
-      const apiUrl =
-        "https://www.swiggy.com/dapi/restaurants/list/v5?lat=25.1523685&lng=75.84322759999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING";
-      const response = await fetch(corsProxyUrl + apiUrl, {
-        headers: {
-          "x-requested-with": "XMLHttpRequest",
-        },
-      });
+    //   const data = await fetch(
+    //     "https://www.swiggy.com/dapi/restaurants/list/v5?lat=25.1523685&lng=75.84322759999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+    //   );
+    //   const json = await data.json();
+    //   setlistOfRestaurants(
+    //     json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    //   );
+    //   setfilteredRestaurant(
+    //     json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    //   );
+    // };
+    // console.log(listOfRestaurants);
 
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
+    // const fetchData = async () => {
+    //   try {
+    //     const apiUrl =
+    //       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=25.1523685&lng=75.84322759999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING";
+    //     const response = await fetch(corsProxyUrl + apiUrl, {
+    //       headers: {
+    //         "x-requested-with": "XMLHttpRequest",
+    //       },
+    //     });
 
-      const json = await response.json();
-      setlistOfRestaurants(
-        json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
-          ?.restaurants
-      );
-      setfilteredRestaurant(
-        json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
-          ?.restaurants
-      );
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
+    //     if (!response.ok) {
+    //       throw new Error(`HTTP error! status: ${response.status}`);
+    //     }
+
+    //     const json = await response.json();
+    //     setlistOfRestaurants(
+    //       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+    //         ?.restaurants
+    //     );
+    //     setfilteredRestaurant(
+    //       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+    //         ?.restaurants
+    //     );
+    //   } catch (error) {
+    //     console.error("Error fetching data:", error);
+    //   }
+    const json = MOCK_DATA;
+    setlistOfRestaurants(
+      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
+    setfilteredRestaurant(
+      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
   };
+
   return listOfRestaurants.length === 0 ? (
     <Shimmer />
   ) : (
