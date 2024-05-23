@@ -25,10 +25,7 @@ const RestaurentCard = (props) => {
       /> */}
 
       <img
-        src={
-          "https:/media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
-          cloudinaryImageId
-        }
+        src={`${process.env.REACT_APP_CDN_URL}/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/${cloudinaryImageId}`}
         alt="res-logo"
         className="rounded-xl"
         onError={(e) => {
